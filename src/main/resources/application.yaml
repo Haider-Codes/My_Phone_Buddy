@@ -1,14 +1,18 @@
+server:
+  port: ${SERVER_PORT}
+
 spring:
   application:
     name: MyPhoneBuddy
   # Database configuration
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/myphonebuddy_db?currentSchema=myphonebuddy_user}
+    username: ${SPRING_DATASOURCE_USERNAME:myphonebuddy_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:pswpsw123}
     driver-class-name: org.postgresql.Driver
   # JPA configuration
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true

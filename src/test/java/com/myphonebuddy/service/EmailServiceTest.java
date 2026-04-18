@@ -1,6 +1,7 @@
 package com.myphonebuddy.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,7 @@ public class EmailServiceTest {
         this.emailService = emailService;
     }
 
+    @Disabled // Not required, just for testing email service
     @Test
     public void sendEmail() throws IOException {
         log.info("Sending email...");

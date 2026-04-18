@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class PageController {
 
+    @RequestMapping("/")
+    public String indexPage() {
+        return "redirect:/home";
+    }
+
     // home page routing
     @RequestMapping("/home")
     public String homePage(Model model) {
