@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-th-replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+
+    <!-- Using Thymeleaf Fragment -->
+    <div id="content">
+        <!-- Using Grid Style -->
+        <div class="grid grid-cols-12">
+            <div class="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
+            <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4">
+                <div class="w-full mt-5 bg-neutral-primary-soft p-6 border border-t-blue-700 border-t-6 dark:border-t-red-700 hover:bg-gray-200 dark:hover:bg-gray-700 border-default rounded-base shadow-xs">
+                                        
+                <!-- Including 'message' fragment -->
+                 <div data-th-replace="~{message :: message}"></div>
+
+                    <form data-th-action="@{'/register'}" method="post" data-th-object="${userInfo}" novalidate>
+                        <h5 class="text-xl text-center font-semibold text-heading mb-2">Sign Up Here</h5>
+                        <h6 class="text-sm text-center font-serif text-gray-400 dark:text-gray-500 mb-6">Manage your contacts on your fingertips...</h6>
+                        <div class="mb-4">
+                            <label for="firstName" class="block mb-2.5 text-sm font-medium text-heading">First Name</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 inset-s-0 flex items-center ps-3 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <input type="text" id="input-group-1" data-th-field="*{firstName}" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Enter your first name">
+                            </div>
+                            <!-- Validating input fields -->
+                            <p data-th-if="${#fields.hasErrors('firstName')}" data-th-text="${#fields.errors('firstName')[0]}" class="text-sm text-red-500 px-2 py-2"></p>
+                        </div>
+                        <div class="mb-4">
+                            <label for="lastName" class="block mb-2.5 text-sm font-medium text-heading">Last Name</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 inset-s-0 flex items-center ps-3 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <input type="text" id="input-group-1" data-th-field="*{lastName}" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Enter your last name">
+                            </div>
+                            <!-- Validating input fields -->
+                            <p data-th-if="${#fields.hasErrors('lastName')}" data-th-text="${#fields.errors('lastName')[0]}" class="text-sm text-red-500 px-2 py-2"></p>
+                        </div>
+                            <div class="mb-4">
+                            <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Email</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 inset-s-0 flex items-center ps-3 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M2.038 5.61A2.01 2.01 0 0 0 2 6v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6c0-.12-.01-.238-.03-.352l-.866.65-7.89 6.032a2 2 0 0 1-2.429 0L2.884 6.288l-.846-.677Z"/>
+                                        <path d="M20.677 4.117A1.996 1.996 0 0 0 20 4H4c-.225 0-.44.037-.642.105l.758.607L12 10.742 19.9 4.7l.777-.583Z"/>
+                                    </svg>
+                               </div>
+                                <input type="text" id="input-group-1" data-th-field="*{email}" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Enter your email">
+                            </div>
+                            <!-- Validating input fields -->
+                            <p data-th-if="${#fields.hasErrors('email')}" data-th-text="${#fields.errors('email')[0]}" class="text-sm text-red-500 px-2 py-2"></p>
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="block mb-2.5 text-sm font-medium text-heading">Your password</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 inset-s-0 flex items-center ps-3">
+                                    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M8 10V7a4 4 0 1 1 8 0v3h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h1Zm2-3a2 2 0 1 1 4 0v3h-4V7Zm2 6a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                               <input type="password" id="password" data-th-field="*{password}" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full pe-3 ps-9 py-2.5 shadow-xs placeholder:text-body" placeholder="•••••••••" required />
+                                <div class="absolute inset-y-0 inset-e-0 flex items-center ps-4 pe-4">
+                                    <a type="button" href="#" id="mode-on">
+                                        <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd" d="M4.998 7.78C6.729 6.345 9.198 5 12 5c2.802 0 5.27 1.345 7.002 2.78a12.713 12.713 0 0 1 2.096 2.183c.253.344.465.682.618.997.14.286.284.658.284 1.04s-.145.754-.284 1.04a6.6 6.6 0 0 1-.618.997 12.712 12.712 0 0 1-2.096 2.183C17.271 17.655 14.802 19 12 19c-2.802 0-5.27-1.345-7.002-2.78a12.712 12.712 0 0 1-2.096-2.183 6.6 6.6 0 0 1-.618-.997C2.144 12.754 2 12.382 2 12s.145-.754.284-1.04c.153-.315.365-.653.618-.997A12.714 12.714 0 0 1 4.998 7.78ZM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </a>                                
+                                    <a href="#" id="mode-off">
+                                        <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="m4 15.6 3.055-3.056A4.913 4.913 0 0 1 7 12.012a5.006 5.006 0 0 1 5-5c.178.009.356.027.532.054l1.744-1.744A8.973 8.973 0 0 0 12 5.012c-5.388 0-10 5.336-10 7A6.49 6.49 0 0 0 4 15.6Z"/>
+                                            <path d="m14.7 10.726 4.995-5.007A.998.998 0 0 0 18.99 4a1 1 0 0 0-.71.305l-4.995 5.007a2.98 2.98 0 0 0-.588-.21l-.035-.01a2.981 2.981 0 0 0-3.584 3.583c0 .012.008.022.01.033.05.204.12.402.211.59l-4.995 4.983a1 1 0 1 0 1.414 1.414l4.995-4.983c.189.091.386.162.59.211.011 0 .021.007.033.01a2.982 2.982 0 0 0 3.584-3.584c0-.012-.008-.023-.011-.035a3.05 3.05 0 0 0-.21-.588Z"/>
+                                            <path d="m19.821 8.605-2.857 2.857a4.952 4.952 0 0 1-5.514 5.514l-1.785 1.785c.767.166 1.55.25 2.335.251 6.453 0 10-5.258 10-7 0-1.166-1.637-2.874-2.179-3.407Z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Validating input fields -->
+                            <p data-th-if="${#fields.hasErrors('password')}" data-th-text="${#fields.errors('password')[0]}" class="text-sm text-red-500 px-2 py-2"></p>
+                        </div>
+                        <div class="mb-4">
+                            <label for="confirm-password" class="block mb-2.5 text-sm font-medium text-heading">Confirm password</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 inset-s-0 flex items-center ps-3">
+                                    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M8 10V7a4 4 0 1 1 8 0v3h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h1Zm2-3a2 2 0 1 1 4 0v3h-4V7Zm2 6a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                               <input type="password" id="confirm-password" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full pe-3 ps-9 py-2.5 shadow-xs placeholder:text-body" placeholder="•••••••••" required />
+                                <div class="absolute inset-y-0 inset-e-0 flex items-center ps-4 pe-4">
+                                    <svg  id="check-match" class="w-5 h-5 text-success" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="mb-4">
+                            <label for="phoneNumber" class="block mb-2.5 text-sm font-medium text-heading">Phone Number</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 inset-s-0 flex items-center ps-3 pointer-events-none">
+                                   <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                      <path d="M7.978 4a2.553 2.553 0 0 0-1.926.877C4.233 6.7 3.699 8.751 4.153 10.814c.44 1.995 1.778 3.893 3.456 5.572 1.68 1.679 3.577 3.018 5.57 3.459 2.062.456 4.115-.073 5.94-1.885a2.556 2.556 0 0 0 .001-3.861l-1.21-1.21a2.689 2.689 0 0 0-3.802 0l-.617.618a.806.806 0 0 1-1.14 0l-1.854-1.855a.807.807 0 0 1 0-1.14l.618-.62a2.692 2.692 0 0 0 0-3.803l-1.21-1.211A2.555 2.555 0 0 0 7.978 4Z"/>
+                                    </svg>
+                                </div>
+                                <input type="text" id="input-group-1" data-th-field="*{phoneNumber}" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Enter your phone number">
+                            </div>
+                            <!-- Validating input fields -->
+                            <p data-th-if="${#fields.hasErrors('phoneNumber')}" data-th-text="${#fields.errors('phoneNumber')[0]}" class="text-sm text-red-500 px-2 py-2"></p>
+                        </div>
+                        <div class="mb-4">                            
+                            <label for="about" class="flex items-center gap-2 mb-2.5 text-sm font-medium text-heading">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+                                </svg>
+                            About
+                            </label>
+                            <textarea id="about" rows="6" data-th-field="*{about}" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body" placeholder="Write your decription here..."></textarea>
+                            <!-- Validating input fields -->
+                            <p data-th-if="${#fields.hasErrors('about')}" data-th-text="${#fields.errors('about')[0]}" class="text-sm text-red-500 px-2 py-2"></p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-1/2 mb-3">Register</button>
+                            <button type="reset" class="text-white text-center bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-1/2 mb-3">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- <div class="grid-col-span-3"></div> -->
+        </div>
+    </div>
+    <script>console.log("Welcome to the sign up page.")</script>
+    <script data-th-src="@{'/js/password.js'}"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: MyPhoneBuddy
+  # Database configuration
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  # JPA configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  # Security configuration
+  security:
+  # OAuth-2.0 configuration
+  # We've defined OAuth configuration using Google Cloud console, where we created a dummy project.
+  # Created API client for OAuth, added scopes, branding logo, homepage URL (JS origins), redirect url.
+    # redirect URL: localhost:8080/login/oauth2/google/code #important
+    # similarly we can configure google, facebook, GitHub, etc. for oauth.
+    oauth2:
+      client:
+        registration:
+          google:         # OAuth2 through Google
+            client-name: google
+            client-id: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_ID}
+            client-secret: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET}
+            scope: email, profile
+          github:         # OAuth2 through GitHub
+            client-name: github
+            client-id: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GITHUB_CLIENT_ID}
+            client-secret: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GITHUB_CLIENT_SECRET}
+            scope: email, profile
+  # adding file size configuration for dealing with multipart files
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  # Email Configurations (We are using MailTrap (an external service) for sending mails
+  mail:
+    host: live.smtp.mailtrap.io
+    username: ${SPRING_MAIL_USERNAME} # not we are using mailtrap api/smtp not sandbox/smtp
+    password: ${SPRING_MAIL_PASSWORD} # api token
+    port: 587 # smtp with starttls
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+        domain:
+          name: "demomailtrap.co"
+
+# Cloudinary configuration (for managing Images for Users/Contacts)
+cloudinary:
+  cloud:
+    name: ${CLOUDINARY_CLOUD_NAME}
+    api:
+      key: ${CLOUDINARY_CLOUD_API_KEY}
+      secret: ${CLOUDINARY_CLOUD_API_SECRET}
+
+# Logging configuration
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: INFO

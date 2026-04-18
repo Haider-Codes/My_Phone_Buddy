@@ -1,0 +1,104 @@
+<nav data-th-fragment="user-navbar" class="bg-neutral-primary fixed w-full z-50 top-0 sm:pl-64 inset-s-0 border-b border-default">
+  <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+    <div class="flex flex-wrap">
+      <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base p-2 focus:outline-none inline-flex sm:hidden">
+        <span class="sr-only">Open sidebar</span>
+        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
+        </svg>
+      </button>
+    <!-- Brand Logo -->  
+    <a data-th-href="@{'/home'}" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img data-th-src="@{'/assets/traced-myphonebuddy-1.png'}" class="h-8 sm:h-9 md:h-10 lg:h-12" alt="MyPhoneBuddy Logo" />
+        <!-- <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span> -->
+    </a>
+    <!-- Brand Logo -->
+   </div>
+
+  <div class="inline-flex lg:order-2 gap-1 md:gap-2 lg:gap-3 space-x-1 md:space-x-0 rtl:space-x-reverse">
+
+    <!-- Theme Toggler -->
+    <button id="theme-toggler" class="px-1 py-1 rounded bg-transparent"> 
+      <svg id="dark-mode" class="w-7 h-7 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/>
+      </svg>
+      <svg id="light-mode" class="w-7 h-7 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 5v3m0 0v3m0-3h-3m3 0h3m-3.3556 7.0913c-1.6389 0-2.58-.2487-3.7085-.9576-1.1285-.709-2.0191-1.7196-2.5631-2.9086-.54402-1.1891-.71806-2.50523-.5009-3.78809.2172-1.28287.8161-2.47705 1.724-3.43701-1.3427.20491-2.60689.74436-3.66765 1.56511-1.06077.82074-1.88149 1.8944-2.38113 3.11496-.49965 1.22056-.66094 2.54583-.46795 3.84493.19298 1.2992.73357 2.5273 1.56839 3.563.83482 1.0358 1.93501 1.8435 3.19194 2.3433 1.2569.4999 2.6272.6745 3.9754.5068 1.3482-.1676 2.6279-.6719 3.7125-1.463 1.0847-.7911 1.937-1.8416 2.4726-3.0478-1.0063.5199-1.9323.664-3.3556.664Z"/>
+      </svg>    
+    </button>
+
+    <button type="button" class="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+      <span class="sr-only">Open user menu</span>
+      <img class="w-8 h-8 rounded-full" data-th-src="@{${loggedInUser.profilePic}}" data-th-onerror="|this.onerror=null; this.src='@{/assets/default-profile-image-2.png}';|" alt="user photo">
+    </button>
+
+    <!-- Dropdown menu -->
+    <div class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-fit" id="user-dropdown">
+      <div class="px-4 py-3 text-sm border-b border-default">
+        <span class="block text-heading font-medium" data-th-text="${loggedInUser.firstName}"></span>
+        <span class="block text-body truncate" data-th-text="${loggedInUser.email}"></span>
+      </div>
+      <ul class="p-2 text-sm text-body font-medium" aria-labelledby="user-menu-button">
+        <li>
+          <a data-th-href="@{'/user/dashboard'}" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Dashboard</a>
+        </li>
+        <li>
+          <a data-th-href="@{'/user/profile'}" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">My Profile</a>
+        </li>
+        <li>
+          <a data-th-href="@{'/user/contacts'}" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">My Contacts</a>
+        </li>
+        <li>
+          <a data-th-href="@{'/logout'}" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Sign out</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Action Button -->
+    <!-- <a data-th-href="@{'/user/profile'}" type="button" class="hidden sm:block text-white bg-green-700 dark:bg-green-600 hover:bg-green-800 dark:hover:bg-green-700 box-border border border-transparent focus:ring-4 focus:ring-green-200 shadow-xs font-medium leading-5 rounded-base text-sm px-1 py-1.5 md:px-2 md:py-2 lg:px-3 lg:py-2 focus:outline-none">
+        <span data-th-text="${loggedInUser.firstName}"></span>
+    </a>
+      <a data-th-href="@{'/logout'}" type="button" class="hidden sm:block text-white bg-danger hover:bg-danger-strong dark:hover:bg-danger-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-1 py-1.5 md:px-2 md:py-2 lg:px-3 lg:py-2 focus:outline-none">
+        Logout
+    </a> -->
+
+      <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-9 h-9 justify-center text-sm text-body rounded-base lg:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary" aria-controls="navbar-cta" aria-expanded="false">
+        <!-- Icon to open menu on small screen -->
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
+    </button>
+  </div>
+  <!-- Action Button -->
+
+  <!-- Links-->
+  <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="navbar-cta">
+    <ul class="font-medium flex flex-col p-4 lg:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 lg:bg-neutral-primary">
+      <li>
+        <a id="home"data-th-href="@{'/home'}" class="block py-2 px-3 text-heading rounded  md:p-0"
+          data-th-classappend="${activePage == 'home' ? ' bg-brand md:bg-transparent md:text-fg-brand' : ' hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:dark:hover:bg-transparent'}"
+          data-th-attrappend="aria-current=${activePage == 'home' ? 'page' : null}">
+          Home</a>
+      </li>
+      <li>
+        <a id="about" data-th-href="@{'/about'}" class="block py-2 px-3 text-heading rounded md:p-0"
+          data-th-classappend="${activePage == 'about' ? ' bg-brand md:bg-transparent md:text-fg-brand' : ' hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:dark:hover:bg-transparent'}"
+          data-th-attrappend="aria-current=${activePage == 'about' ? 'page' : null}">
+          About</a>
+      </li>
+      <li>
+        <a id="services" data-th-href="@{'/services'}"class="block py-2 px-3 text-heading rounded md:p-0"
+          data-th-classappend="${activePage == 'services' ? ' bg-brand md:bg-transparent md:text-fg-brand' : ' hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:dark:hover:bg-transparent'}"
+          data-th-attrappend="aria-current=${activePage == 'services' ? 'page' : null}">
+          Services</a>
+      </li>
+      <li>
+        <a id="contact" data-th-href="@{'/contact'}" class="block py-2 px-3 text-heading rounded md:p-0"
+          data-th-classappend="${activePage == 'contact' ? ' bg-brand md:bg-transparent md:text-fg-brand' : ' hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:dark:hover:bg-transparent'}"
+          data-th-attrappend="aria-current=${activePage == 'contact' ? 'page' : null}">
+          Contact Us</a>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+</nav>

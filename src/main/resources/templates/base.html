@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-th-fragment="parent(content, title, script)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Linking tailwindcss Styling -->
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+     <script>
+        if(localStorage.getItem('theme') == 'dark') {
+           document.querySelector("html").classList.add('dark'); 
+        }
+     </script>
+    <title data-th-replace="${title}"></title>
+</head>
+<body class="w-full min-h-dvh flex flex-col box-border">
+
+    <!-- Defining Thymeleaf Fragment -->
+
+    <!-- Common Header -->
+    <header>
+        
+        <!-- If User is loggedIn -->
+        <div data-th-if="${loggedInUser}">
+            <div data-th-replace="~{user/navbar :: user-navbar}"></div>
+        </div>
+
+        <!-- If User is not loggedIn -->
+        <div data-th-unless="${loggedInUser}">
+            <div data-th-replace="~{navbar :: navbar}"></div>
+        </div>
+
+    </header>
+
+    <!-- Main Content -->
+     <div class="p-2 flex pt-20 pb-4 grow flex-col dark:bg-gray-900 dark:text-white">
+        <section data-th-replace="${content}"></section>
+     </div>
+    
+    <!-- Common Footer -->
+     <footer class="p-4 dark:bg-black bg-gray-300 text-center dark:text-white">SYED HAIDER RAZA &copy; 2026. All rights reserved</footer>
+
+    <!--  Flowbite Phoenix JS -->
+    <script data-th-src="@{'/public/flowbite.min.js'}"></script>
+    <!-- Added CDN for Sweetalerts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Added CDN for export contacts to XLSX -->
+    <script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
+     <!-- Added CDN for export contacts to PDF -->
+     <!-- 1. Core PDF Engine -->
+    <!-- <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script> -->
+    <!-- 2. Modern Canvas Engine (supports oklch) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.2/dist/html2canvas-pro.min.js"></script> -->
+    <!-- 3. The Combined Plugin -->
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.12.1/html2pdf.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/5.0.2/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- Running main script -->
+     <script data-th-src="@{'/js/script.js'}"></script>
+    <th:block data-th-replace="${script}"></th:block>
+</body>
+</html>

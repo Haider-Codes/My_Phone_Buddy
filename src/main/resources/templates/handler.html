@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" data-th-fragment="handler(status, code, subject, description)" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <meta charset="UTF-8">
+    <title data-th-replace="${status}"></title>
+</head>
+<body>
+    <!-- Using Thymeleaf Fragment -->
+    <div id="content">
+        <section class="bg-white dark:bg-gray-900">
+            <div class="py-8 px-4 mx-auto max-w-7xl lg:py-16 lg:px-6">
+                <div class="mx-auto max-w-screen-sm text-center">
+                    <h1 data-th-replace="${code}"></h1>
+                    <p data-th-replace="${subject}"></p>
+                    <p data-th-replace="${description}"></p>
+                </div>   
+            </div>
+        </section>
+    </div>
+    <script>console.log("Error page is displayed.")</script>
+</body>
+</html>

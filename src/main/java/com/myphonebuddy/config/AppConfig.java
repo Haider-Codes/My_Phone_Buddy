@@ -1,0 +1,33 @@
+package com.myphonebuddy.config;
+
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+
+    @Value("${cloudinary.cloud.name}")
+    private String cloudName;
+
+    @Value("${cloudinary.cloud.api.key}")
+    private String apiKey;
+
+    @Value("${cloudinary.cloud.api.secret}")
+    private String apiSecret;
+    // Configuring some beans necessary for the application
+    @Bean
+    public Cloudinary cloudinary() {
+        return new Cloudinary(
+                ObjectUtils.asMap(
+                        "cloud_name", cloudName,
+                        "api_key", apiKey,
+                        "api_secret", apiSecret,
+                        "secure", true
+                )
+        );
+    }
+
+}

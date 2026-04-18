@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{handler :: handler(~{::#status}, ~{::#code}, ~{::#subject}, ~{::#description})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="status">Failed</title>
+</head>
+<body>
+    
+    <h1 id="code" class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-danger-strong">500</h1>
+    <div id="subject" class="flex gap-2 items-center justify-center mb-4">
+        <svg class="w-20 h-20 text-danger" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M8.97 14.316H5.004c-.322 0-.64-.08-.925-.232a2.022 2.022 0 0 1-.717-.645 2.108 2.108 0 0 1-.242-1.883l2.36-7.201C5.769 3.54 5.96 3 7.365 3c2.072 0 4.276.678 6.156 1.256.473.145.925.284 1.35.404h.114v9.862a25.485 25.485 0 0 0-4.238 5.514c-.197.376-.516.67-.901.83a1.74 1.74 0 0 1-1.21.048 1.79 1.79 0 0 1-.96-.757 1.867 1.867 0 0 1-.269-1.211l1.562-4.63ZM19.822 14H17V6a2 2 0 1 1 4 0v6.823c0 .65-.527 1.177-1.177 1.177Z" clip-rule="evenodd"/>
+        </svg>
+        <p class="mb-4 text-2xl tracking-tight font-bold text-danger md:text-3xl">Whoops!!! Internal Server Error!</p>
+    </div>
+    <p id="description" class="mb-4 text-xl tracking-tight font-bold text-fg-brand md:text-2xl ">Email could not be verified...</p>
+
+</body>
+</html>
