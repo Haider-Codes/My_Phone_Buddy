@@ -53,7 +53,7 @@ const loadContact = (id) => {
     showModal();
     const result = async () => {
         try {
-        let data = await((await fetch(`http://localhost:8080/api/contact?id=${id}`)).json());
+        let data = await((await fetch(`https://my-phone-buddy.onrender.com/api/contact?id=${id}`)).json());
         console.log(data);
         console.log("Email of contact is:", data.email);
         modalName.innerHTML = data.name;

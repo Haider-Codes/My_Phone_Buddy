@@ -14,7 +14,7 @@ public class AppConstants {
 
     public static final int PAGINATION_SIZE = 5;
 
-    public static final String APP_DOMAIN = "http://localhost:8080";
+    public static final String APP_DOMAIN = "https://my-phone-buddy.onrender.com/";
 
     public static final int TOP_FAVOURITE_CONTACTS = 5;
 

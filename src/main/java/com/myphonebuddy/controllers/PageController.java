@@ -70,4 +70,11 @@ public class PageController {
         return "login";
     }
 
+    // Privacy Policy Routing
+    @RequestMapping("/privacy")
+    public String privacy() {
+        log.info("Privacy Page");
+        return "privacy-policy";
+    }
+
 }
