@@ -10,19 +10,21 @@
     <!-- Using Thymeleaf Fragment -->
     <div id="content">
 
-        <!-- BACKGROUND BLOBS -->
-        <div class="absolute inset-0 z-10 pointer-events-none">
-            <div class="absolute w-96 h-96 bg-blue-400/30 dark:bg-blue-500/20 rounded-full blur-3xl animate-blob top-10 left-10"></div>
-            <div class="absolute w-96 h-96 bg-purple-400/30 dark:bg-purple-500/20 rounded-full blur-3xl animate-blob animation-delay-2000 top-1/3 right-10"></div>
-            <div class="absolute w-96 h-96 bg-indigo-400/30 dark:bg-indigo-500/20 rounded-full blur-3xl animate-blob animation-delay-4000 bottom-10 left-1/3"></div>
-        </div>
+        <section class="relative overflow-hidden bg-blue-200 dark:bg-blue-950">
+            <!-- BACKGROUND BLOBS -->
+            <div class="absolute inset-0 z-10 pointer-events-none">
+                <div class="absolute w-96 h-96 bg-blue-400/30 dark:bg-blue-500/20 rounded-full blur-3xl animate-blob top-10 left-10"></div>
+                <div class="absolute w-96 h-96 bg-purple-400/30 dark:bg-purple-500/20 rounded-full blur-3xl animate-blob animation-delay-2000 top-1/3 right-10"></div>
+                <div class="absolute w-96 h-96 bg-indigo-400/30 dark:bg-indigo-500/20 rounded-full blur-3xl animate-blob animation-delay-4000 bottom-10 left-1/3"></div>
+            </div>
 
-        <!-- HERO -->
-        <section class="py-20 text-center bg-blue-200 dark:bg-blue-950">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
-        <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-            Have questions or feedback? We'd love to hear from you.
-        </p>
+            <!-- HERO -->
+            <div class="py-20 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
+                <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg">
+                    Have questions or feedback? We'd love to hear from you.
+                </p>
+            </div>
         </section>
 
         <!-- CONTACT SECTION -->
@@ -94,7 +96,7 @@
                     <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-1/2 mb-3">Login</button>
                     <button type="reset" class="text-white text-center bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-1/2 mb-3">Reset</button>
                 </div>
-                <p id="successMsg" class="hidden text-green-500 text-sm">✅ Message sent successfully!</p>
+                <!-- <p id="successMsg" class="hidden text-green-500 text-sm">✅ Message sent successfully!</p> -->
             </form>
         </section>
 
