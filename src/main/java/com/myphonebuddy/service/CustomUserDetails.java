@@ -55,6 +55,9 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         // By default, any user register via form login is disabled, hence won't be authenticated
-        return user.isEnabled();
+        //return user.isEnabled();
+        // Since we are using a free tier plan for mail verification to enable user, hence for time being until
+        // we purchase a plan, we are overriding this value to true.
+        return true;
     }
 }

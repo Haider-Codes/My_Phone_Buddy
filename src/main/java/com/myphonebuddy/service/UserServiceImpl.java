@@ -51,26 +51,28 @@ public class UserServiceImpl implements UserService {
         // Setting the user-role
         user.getRoles().add(default_role);
 
-        if(!user.isEnabled()) {
+        // Disabled this piece of code for some time, until we purchase a plan for email sending using mail-trap
 
-            // creating a verification token, to be used later for verifying user email.
-            String verificationToken = UUID.randomUUID().toString();
-
-            String emailVerificationLink = EmailVerificationUtil.generateEmailVerificationLink(verificationToken);
-
-            // send verification link
-            emailService.sendEmail(user.getEmail(),
-                    "MyPhoneBuddy : Verify your email to enable your account",
-                    emailVerificationLink);
-
-            log.info("Email verification sent to {}", user.getEmail());
-
-            // saving verification token in the database
-            user.setVerificationToken(verificationToken);
-        }
-        else {
-            log.info("User account is already enabled as it is logged in using: {}", user.getProvider());
-        }
+//        if(!user.isEnabled()) {
+//
+//            // creating a verification token, to be used later for verifying user email.
+//            String verificationToken = UUID.randomUUID().toString();
+//
+//            String emailVerificationLink = EmailVerificationUtil.generateEmailVerificationLink(verificationToken);
+//
+//            // send verification link
+//            emailService.sendEmail(user.getEmail(),
+//                    "MyPhoneBuddy : Verify your email to enable your account",
+//                    emailVerificationLink);
+//
+//            log.info("Email verification sent to {}", user.getEmail());
+//
+//            // saving verification token in the database
+//            user.setVerificationToken(verificationToken);
+//        }
+//        else {
+//            log.info("User account is already enabled as it is logged in using: {}", user.getProvider());
+//        }
 
         return userRepository.save(user);
     }
