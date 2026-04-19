@@ -35,6 +35,9 @@ function changeTheme() {
         
         // Setting current Theme
         setPageTheme(oldTheme, currentTheme);
+
+        // calling carousel change function based on theme change.
+        carouselChange();
     })
 
 }

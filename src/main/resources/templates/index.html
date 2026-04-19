@@ -20,38 +20,38 @@
             <div class="relative max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-10 items-center">
                 <!-- LEFT TEXT -->
                 <div class="max-w-xl">
-                <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
-                    Contacts, reimagined.
-                </h1>
-                <p class="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-4">
-                    Simple. Secure. Synced.
-                </p>
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
+                        Contacts, reimagined.
+                    </h1>
+                    <p class="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-4">
+                        Simple. Secure. Synced.
+                    </p>
 
-                <p class="text-base text-gray-500 dark:text-gray-400 mb-6">
-                    Organize, search, and access your contacts from anywhere.
-                </p>
-                <div class="flex gap-4">
-                    <a type="button" data-th-href="@{'/signUp'}" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:scale-105 transition">Get Started</a>
-                </div>
+                    <p class="text-base text-gray-500 dark:text-gray-400 mb-6">
+                        Organize, search, and access your contacts from anywhere.
+                    </p>
+                    <div class="flex gap-4">
+                        <a type="button" data-th-href="@{'/signUp'}" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:scale-105 transition">Get Started</a>
+                    </div>
                 </div>
 
                 <!-- Carousel -->
                 <div id="default-carousel" class="relative" data-carousel="slide">
                     <div class="relative h-72 overflow-hidden rounded-lg">
                         <div class="hidden duration-900 ease-in-out" data-carousel-item>
-                            <img data-th-src="@{'/assets/sample_dashboard.png'}" class="absolute block w-full h-full object-cover" />
+                            <img id="carousel-image-1" class="absolute block w-full h-full object-cover" />
                             <div class="absolute bottom-0 bg-black/40 text-white text-center p-4 w-full">
                                 An interactive dashboard to manage your contacts.
                             </div>
                         </div>
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img data-th-src="@{'/assets/sample_modal.png'}" class="absolute block w-full h-full object-cover" />
+                            <img id="carousel-image-2" class="absolute block w-full h-full object-cover" />
                             <div class="absolute bottom-0 bg-black/40 text-white text-center p-4 w-full">
                                 A personalized contact card.
                             </div>
                         </div>
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img data-th-src="@{'/assets/sample_ViewOfContactsWithSearch.png'}" class="absolute block w-full h-full object-cover" />
+                            <img id="carousel-image-3" class="absolute block w-full h-full object-cover" />
                             <div class="absolute bottom-0 bg-black/40 text-white text-center p-4 w-full">
                                 Instant search based variety of fields.
                             </div>
@@ -136,5 +136,6 @@
 
     </div>
     <script>console.log("Welcome to the home page.")</script>
+    <script data-th-src="@{'/js/carousel.js'}"></script>
 </body>
 </html>
